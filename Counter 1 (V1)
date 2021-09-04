@@ -20,13 +20,17 @@ def Lose1():
    Totals1.delete(0,6)
    count2 = str(int(count2)+1)
    Totals1.insert(1,count2)
+def Save1():
+    f = open("Stats.txt","a")
+    f.write("Wins :"+ Totals.get()+" # Loses :"+Totals1.get()+"\n")
+    f.close()
 
 window = tk.Tk()
 greeting = tk.Label(text="KillCounter")
 greeting.pack()
 
 Win = tk.Button(
-    text="Wins :",
+    text="Wins",
     width=25,
     height=5,
     bg="Green",
@@ -47,10 +51,17 @@ Lose = tk.Button(
     height=5,
     bg="Red",
     command = Lose1)
-
 Lose.pack()
-window.mainloop()
 
+Save = tk.Button(
+    text="Save",
+    width=25,
+    height=3,
+    bg="Yellow",
+    command = Save1)
+Save.pack()
+
+window.mainloop()
 #while STOP != "s":
 # if input("Did you win y/n \n") == "y":
 #    Win += 1 
