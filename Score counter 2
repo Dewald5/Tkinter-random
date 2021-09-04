@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jul 27 23:54:04 2021
+
+@author: Dewald
+"""
+import tkinter as tk
+
+Score = "0 - 0"
+ 
+def Win1(): 
+   count = Totals.get()
+   fcount = count.split("-")
+   ffcount = fcount[0]
+   if int(fcount[0])<10:
+    Totals.delete(0,1)
+   else:
+    Totals.delete(0,2)
+   count = str(int(ffcount)+1)
+   Totals.insert(0,count)
+   
+def Lose1(): 
+   count1 = Totals.get()
+   fcount1 = count1.split("-")
+   ffcount1 = fcount1[1]
+   Totals.delete(4,7)
+   count1 = str(int(ffcount1)+1)
+   Totals.insert(5,count1)
+
+window = tk.Tk()
+greeting = tk.Label(text="KillCounter")
+greeting.pack()
+
+Win = tk.Button(
+    text="Win",
+    width=25,
+    height=5,
+    bg="Green",
+    command = Win1)
+Win.pack()
+
+Totals = tk.Entry()
+Totals.insert(0,Score)
+Totals.pack()
+
+Lose = tk.Button(
+    text="Lose",
+    width=25,
+    height=5,
+    bg="Red",
+    command = Lose1)
+Lose.pack()
+
+window.mainloop()
